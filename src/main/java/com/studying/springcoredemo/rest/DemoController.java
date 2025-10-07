@@ -25,9 +25,11 @@ public class DemoController {
 */
     // 2 - (Setter injection) set function for dependency injection
     @Autowired
-    public void setCoach(@Qualifier("baseballCoach") Coach thecoach) {
+    public void setCoach(/*@Qualifier("baseballCoach")*/ Coach thecoach) {
         coach = thecoach;
     }
+    
+// so using @Qualifier("baseballCoach") , will overwrite primary bean .
 
     @GetMapping("/workout")
     public String getDailyWorkout() {
