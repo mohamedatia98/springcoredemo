@@ -19,7 +19,7 @@ public class DemoController {
 /* 
     // 1- (constructor injection) for dependency injection
     // @Autowired
-    public DemoController(Coach thecoach) {
+    public DemoController(@Qualifier("cricketCoach")Coach thecoach) {
         coach = thecoach;
     }
 */
