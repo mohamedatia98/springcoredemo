@@ -6,9 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // to scan other packages outside this package
 @SpringBootApplication
-
-
-// (scanBasePackages = {"com.studying.springcoredemo"})
+(scanBasePackages = {"com.studying.springcoredemo","untiltest"})
 
 
 
