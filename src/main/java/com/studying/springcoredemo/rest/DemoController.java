@@ -7,7 +7,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.studying.springcoredemo.common.Coach;
 
+/*
+ * 
+ * Section(2)
+(constructor-setter-field ) injection types 
+Qaulifiers-Primary
+Lazy Intialization(locally-global)
+beans Scope ( singleton-prototype etc )
+PostConstruct, PreDestroy 
+Config Bean 
 
+Good Notes :
+so beans are intialized first before Restcontroller class .
+
+ */
 
 @RestController
 public class DemoController {
@@ -22,7 +35,7 @@ public class DemoController {
     // 3- if you want to use field injection make sure to use @Autowired on the field
     // @Autowired
     private Coach coach;
-        private Coach Newcoach;
+    private Coach Newcoach;
 /* 
     // 1- (constructor injection) for dependency injection
     // @Autowired
@@ -32,18 +45,20 @@ public class DemoController {
 */
     // 2 - (Setter injection) set function for dependency injection
     @Autowired
-    public void setCoach(@Qualifier("cricketCoach") Coach thecoach , @Qualifier("cricketCoach")  Coach newcoach) {
+    public void setCoach(@Qualifier("swimCoachBean") Coach thecoach , @Qualifier("swimCoachBean")  Coach newcoach) {
         coach = thecoach;
         Newcoach = newcoach;
     }
     
 // so using @Qualifier("baseballCoach") , will overwrite primary bean .
 // this code below does check between bean scope . 
+
     @GetMapping("/check")
     public String getDailyWorkout() {
-       // return coach.getDailyWorkout();
-       return "Comparing Two Beans Now : " + coach.getDailyWorkout() + " vs " + Newcoach.getDailyWorkout() + " & " + (coach == Newcoach);
+        return coach.getDailyWorkout();
+       //return "Comparing Two Beans Now : " + coach.getDailyWorkout() + " vs " + Newcoach.getDailyWorkout() + " & " + (coach == Newcoach);
     }
+    
 /* 
     @GetMapping("/postbeans")
     public String getPostBeans() {
